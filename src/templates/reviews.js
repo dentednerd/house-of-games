@@ -1,11 +1,13 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Review from '../organisms/review';
+import { styled } from '../stitches.config';
+import Title from '../molecules/title';
 
 function Reviews() {
   let { category } = useParams();
   const [reviews, setReviews] = useState([]);
+
   useEffect(() => {
     axios({
       method: 'get',
@@ -24,12 +26,20 @@ function Reviews() {
 
   if (!reviews) return null;
 
+  const StyledLink = styled(Link, {
+    display: 'block',
+    textDecoration: 'none',
+    marginBottom: '1rem'
+  });
+
   return (
-    <main>
+    <section className="content">
       {reviews.map((review) => (
-        <Review key={review.review_id} review_id={review.review_id} />
+        <StyledLink to={`/review/${review.review_id}`}>
+          <Title key={review.review_id} review={review} />
+        </StyledLink>
       ))}
-    </main>
+    </section>
   );
 }
 

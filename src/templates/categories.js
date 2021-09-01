@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import CategoryLink from '../atoms/category-link';
+import CategoryChip from '../atoms/category-chip';
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -14,11 +14,11 @@ function Categories() {
   }, []);
 
   return (
-    <main>
+    <section className="content">
       {categories.map((category) => (
-        <CategoryLink key={category.slug} slug={category.slug} />
+        <CategoryChip key={category.slug} slug={category.slug} />
       ))}
-    </main>
+    </section>
   );
 }
 

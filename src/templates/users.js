@@ -15,14 +15,14 @@ function Users() {
   console.log({ users });
 
   return (
-    <main>
+    <section className="content">
       {users.map((user) => (
         <div key={user.username}>
           <img src={user.avatar_url} alt={user.username} />
           <p>{user.username} {user.name}</p>
         </div>
       ))}
-    </main>
+    </section>
   );
 }
 

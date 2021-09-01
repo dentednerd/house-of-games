@@ -3,24 +3,21 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { GlobalStyle } from './GlobalStyle';
+import globalStyles from './globalStyles';
 import Categories from './templates/categories';
 import Reviews from './templates/reviews';
+import Review from './templates/review';
 import Users from './templates/users';
 import Header from './organisms/header';
 import Footer from './organisms/footer';
 
-// TODO: create review previews for home page
-// TODO: create single review with comments
-// TODO: filter reviews by category? does it exist on the back end?
-// TODO: styling -- Material UI? no, styled-components
-
 function App() {
+  globalStyles();
+
   return (
     <>
-      <GlobalStyle />
+      <Header />
       <main>
-        <Header />
         <Router>
           <Switch>
             <Route exact path="/">
@@ -34,6 +31,9 @@ function App() {
             </Route>
             <Route path="/category/:category">
               <Reviews />
+            </Route>
+            <Route path="/review/:id">
+              <Review />
             </Route>
           </Switch>
         </Router>

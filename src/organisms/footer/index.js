@@ -1,12 +1,11 @@
-import styled from 'styled-components';
-import { colors } from '../../GlobalStyle';
+import { styled } from '../../stitches.config';
 
-const StyledFooter = styled.footer`
-  width: 100%;
-  background: ${colors.navy};
-  color: ${colors.white};
-  padding: 1rem;
-`;
+const StyledFooter = styled('footer', {
+  width: 'calc(100% - 2rem)',
+  background: '$navy',
+  color: '$white',
+  padding: '1rem'
+});
 
 export default function Footer() {
   return (
