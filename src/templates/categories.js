@@ -16,7 +16,7 @@ function Categories() {
   return (
     <main>
       {categories.map((category) => (
-        <CategoryLink category={category} />
+        <CategoryLink key={category.slug} slug={category.slug} />
       ))}
     </main>
   );
