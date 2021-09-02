@@ -16,7 +16,8 @@ export const {
       coral: 'hsl(354, 88%, 71%)',
       purple: 'hsl(272, 15%, 42%)',
       navy: 'hsl(208, 40%, 35%)',
-      white: '#ffffff',
+      white: 'hsl(0, 0%, 100%)',
+      grey: 'hsl(0, 0%, 75%)',
       lightNavy: 'hsl(208, 40%, 85%)',
       medNavy: 'hsl(208, 40%, 65%)'
     }

@@ -8,7 +8,7 @@ export default function TimeChip({ timestamp }) {
   return (
     <Chip
       text={dayjs(timestamp).format("Do MMM 'YY")}
-      color="$medNavy"
+      color="grey"
     />
   );
 }

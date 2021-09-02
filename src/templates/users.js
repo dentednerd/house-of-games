@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { fetchUsers } from '../utils/api';
 
 function Users() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: 'https://nc-games-sql-dentednerd.herokuapp.com/api/users'
-    }).then((response) => {
-      setUsers(response.data.users);
+    fetchUsers().then((users) => {
+      setUsers(users);
     });
+    return;
   }, []);
 
-  console.log({ users });
+  if (!users) return null;
 
   return (
     <section className="content">

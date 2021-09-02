@@ -8,6 +8,7 @@ import Categories from './templates/categories';
 import Reviews from './templates/reviews';
 import Review from './templates/review';
 import Users from './templates/users';
+import UserProfile from './templates/user-profile';
 import Header from './organisms/header';
 import Footer from './organisms/footer';
 
@@ -26,7 +27,7 @@ function App() {
             <Route path="/categories">
               <Categories />
             </Route>
-            <Route path="/users">
+            <Route exact path="/users">
               <Users />
             </Route>
             <Route path="/category/:category">
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route path="/review/:id">
               <Review />
+            </Route>
+            <Route path="/users/:username">
+              <UserProfile />
             </Route>
           </Switch>
         </Router>

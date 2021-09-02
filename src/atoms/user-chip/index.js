@@ -12,14 +12,18 @@ export default function UserChip({ username }) {
     }).then((response) => {
       setUser(response.data.user);
     });
+    return; // need cancel token
   }, [username]);
+
+  if (!user || !user.username) return null;
 
   return (
     <Chip
+      color="coral"
+      outlined
       to={`/users/${user.username}`}
       img={user.avatar_url}
       text={user.username}
-      color="$coral"
     />
   );
 };

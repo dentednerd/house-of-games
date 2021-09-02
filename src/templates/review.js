@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { styled } from '../stitches.config';
-import axios from 'axios';
+import { fetchReviewById, fetchCommentsByReviewId } from '../utils/api';
 import TimeChip from '../atoms/time-chip';
 import Comment from '../molecules/comment';
 import Title from '../molecules/title';
@@ -12,30 +12,20 @@ export default function Review() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: `https://nc-games-sql-dentednerd.herokuapp.com/api/reviews/${id}`
-    }).then((response) => {
-      setReview(response.data.review);
-    });
+    fetchReviewById(id)
+      .then((review) => setReview(review));
+    return;
   }, [id]);
 
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: `https://nc-games-sql-dentednerd.herokuapp.com/api/reviews/${id}/comments`
-    }).then((response) => {
-      setComments(response.data.comments);
-    });
+    fetchCommentsByReviewId(id)
+      .then((comments) => setComments(comments));
   }, [id]);
 
   if (!review) return null;
 
   const StyledReview = styled('article', {
-    // backgroundColor: '$lightNavy',
-    // borderRadius: '1rem',
     marginBottom: '1rem',
-    // boxShadow: '0 0 0.5rem $colors$navy',
 
     p: {
       padding: '1rem',

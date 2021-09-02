@@ -7,7 +7,7 @@ export default function CategoryChip({ slug }) {
     <Chip
       to={`/category/${slug}`}
       text={formatTitle(slug)}
-      color="$purple"
+      color="purple"
     />
   );
 };

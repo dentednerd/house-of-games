@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { fetchCategories } from '../utils/api';
 import CategoryChip from '../atoms/category-chip';
 
 function Categories() {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: 'https://nc-games-sql-dentednerd.herokuapp.com/api/categories'
-    }).then((response) => {
-      setCategories(response.data.categories);
-    });
+    fetchCategories()
+      .then((categories) => setCategories(categories));
+    return;
   }, []);
 
   return (

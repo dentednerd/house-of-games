@@ -1,6 +1,7 @@
 import { styled } from '../../stitches.config';
 import UserChip from '../../atoms/user-chip';
 import TimeChip from '../../atoms/time-chip';
+import Voter from '../../molecules/voter';
 
 const StyledComment = styled('section', {
   backgroundColor: '$beige',
@@ -27,6 +28,7 @@ export default function Comment({ comment }) {
       <div className="chips">
         <UserChip username={comment.author} />
         <TimeChip timestamp={comment.created_at} />
+        <Voter commentId={comment.comment_id} initialVotes={comment.votes} />
       </div>
     </StyledComment>
   )
