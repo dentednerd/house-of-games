@@ -5,7 +5,9 @@ import { styled } from '../../stitches.config';
 dayjs.extend(advancedFormat);
 
 const StyledTime = styled('span', {
-  color: '$darkGrey'
+  color: '$darkGrey',
+  fontSize: '$0',
+  lineHeight: '$0'
 });
 
 export default function Time({ timestamp }) {

@@ -10,13 +10,13 @@
 
 ## UX
 
-- [ ] Basic styling added
-- [ ] Responsive design
-- [ ] Items aligned
-- [ ] Content legible (not too wide, obstructed, etc)
-- [ ] Refreshing doesn’t cause an issue on sub-pages
-- [ ] No errors in the console
-- [ ] Votes / Posts / Deletions happen instantly _OR_ give user indication of loading
+- [x] Basic styling added
+- [x] Responsive design
+- [x] Items aligned
+- [x] Content legible (not too wide, obstructed, etc)
+- [x] Refreshing doesn’t cause an issue on sub-pages
+- [x] No errors in the console
+- [x] Votes / Posts / Deletions happen instantly _OR_ give user indication of loading
 
 ## Functionality
 
@@ -26,19 +26,19 @@
 
 ### Reviews
 
-- [ ] Serves all reviews / top reviews
-- [ ] Can vote on reviews
-- [ ] Can vote a maximum of once in either direction per page load
-- [ ] Votes are persistent when page is refreshed
-- [ ] Reviews by category pages load only relevant reviews (especially when navigating from one category page to another)
+- [x] Serves all reviews / top reviews
+- [x] Can vote on reviews
+- [x] Can vote a maximum of once in either direction per page load
+- [x] Votes are persistent when page is refreshed
+- [x] Reviews by category pages load only relevant reviews (especially when navigating from one category page to another)
 - [ ] Can sort reviews by date created / comment_count / votes
 
 ### Individual Review / Comments
 
-- [ ] Individual reviews are served with comments
-- [ ] Can vote on comments
-- [ ] Can vote a maximum of once in either direction per page load
-- [ ] Votes are persistent when page is refreshed
+- [x] Individual reviews are served with comments
+- [x] Can vote on comments
+- [x] Can vote a maximum of once in either direction per page load
+- [x] Votes are persistent when page is refreshed
 - [ ] Can post new comments, which are persistent
 - [ ] Can only delete comments of logged in user
 - [ ] Deleted comments don’t re-appear on re-render/refresh
@@ -54,24 +54,24 @@
 
 ## Error Handling
 
-- [ ] Bad url
-- [ ] Bad category slug in url
-- [ ] Bad review_id in url
+- [x] Bad url
+- [x] Bad category slug in url
+- [x] Bad review_id in url
 - [ ] Post comment: (No text in comment body / Can you post without logging in?)
 
 ## Code
 
-- [ ] Well named components
-- [ ] Components reused where possible (`Reviews` / `Voter`...)
-- [ ] Minimal state - don't hold derivable data in state
-- [ ] Set state correctly, using previous state where possible
-- [ ] Handle asynchronicity clearly (i.e. isLoading pattern)
-- [ ] Functions are DRY (`handleChange` for controlled components / api calls)
-- [ ] Use object destructuring where possible
-- [ ] Tidy? If not: ESLint / Prettier
-- [ ] `node_modules` git ignored
-- [ ] No `console.log`s / comments
-- [ ] remove unnecessary files (e.g. App.test.js)
+- [x] Well named components
+- [x] Components reused where possible (`Reviews` / `Voter`...)
+- [x] Minimal state - don't hold derivable data in state
+- [x] Set state correctly, using previous state where possible
+- [x] Handle asynchronicity clearly (i.e. isLoading pattern)
+- [x] Functions are DRY (`handleChange` for controlled components / api calls)
+- [x] Use object destructuring where possible
+- [x] Tidy? If not: ESLint / Prettier
+- [x] `node_modules` git ignored
+- [x] No `console.log`s / comments
+- [x] remove unnecessary files (e.g. App.test.js)
 
 ## MAKE SURE ALL TESTS ARE STILL PASSING IN BACK END
 

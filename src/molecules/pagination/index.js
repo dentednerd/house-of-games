@@ -10,16 +10,18 @@ const StyledPagination = styled('section', {
 const StyledButton = styled('button', {
   width: '10ch',
   height: '2rem',
-  fontFamily: '"Barlow", sans-serif',
+  fontFamily: '$bubblegum',
+  fontSize: '$2',
   fontWeight: '700',
   backgroundColor: '$coral',
   color: '$white',
   border: 'none',
-  boxShadow: '0 0 0.5rem $colors$navy',
+  boxShadow: '$wide',
   cursor: 'pointer',
+  transition: '$all',
 
   '&:hover': {
-    boxShadow: '0 0 0.25rem $colors$navy'
+    boxShadow: '$default'
   }
 });
 

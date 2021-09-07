@@ -15,14 +15,6 @@ const StyledHeader = styled('header', {
   a: {
     textDecoration: 'none',
     color: '$white'
-  },
-
-  h1: {
-    display: 'inline',
-    fontFamily: '"Bubblegum Sans", sans-serif',
-    fontSize: '1.75rem',
-    padding: '0',
-    margin: '0'
   }
 });
 
@@ -30,7 +22,7 @@ export default function Header() {
   return (
     <StyledHeader>
       <a href="/">
-        <h1>DentedNerd's House of Games</h1>
+        <h1>dentednerd's House of Games</h1>
       </a>
       <Menu />
     </StyledHeader>

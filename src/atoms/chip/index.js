@@ -5,15 +5,17 @@ export default function Chip({ to, text, img, color }) {
   const Element = to ? Link : 'div';
 
   const StyledChip = styled(Element, {
-    display: 'inline-flex',
-    color: '$white',
-    height: '2rem',
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: '1rem',
-    fontSize: '1rem',
-    margin: '0.25rem',
+    color: '$white',
+    borderRadius: '$corner',
+    height: '1rem',
+    fontSize: '$0',
+    lineHeight: '$0',
     textDecoration: 'none',
-    boxShadow: '0 0 0.25rem $colors$navy',
+    boxShadow: '$default',
 
     variants: {
       color: {
@@ -22,22 +24,19 @@ export default function Chip({ to, text, img, color }) {
         },
         purple: {
           backgroundColor: '$purple'
-        },
-        grey: {
-          backgroundColor: '$grey'
         }
       }
     },
 
     img: {
-      height: '2rem',
-      width: '2rem',
-      borderRadius: '1rem'
+      height: '1.5rem',
+      width: '1.5rem',
+      borderRadius: '$corner'
     },
 
     span: {
-      padding: '0.25rem 0.5rem',
-      lineHeight: '1'
+      padding: '0 0.5rem',
+      lineHeight: '$1'
     }
   });
 

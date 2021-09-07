@@ -20,8 +20,11 @@ yarn start
 - [x] implement votes
 - [x] implement pagination
 - [x] implement user profiles
-- [ ] implement nav menu, mob first
+- [x] implement nav menu, mob first
 - [ ] implement login (fake it at first)
-- [ ] BACKEND: implement routes for reviews/comments by user
-- [ ] what to put in the footer?
+- [x] BACKEND: implement reviews by user
+- [ ] BACKEND: implement comments by user
+- [x] add reviews to user profile
+- [ ] add comments to user profile
+- [x] what to put in the footer?
 - [x] implement loading spinner

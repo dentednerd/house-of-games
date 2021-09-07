@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { styled } from '../stitches.config';
 import { fetchReviewById, fetchCommentsByReviewId } from '../utils/api';
@@ -11,6 +11,7 @@ import Voter from '../molecules/voter';
 export default function Review() {
   let { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [review, setReview] = useState({});
   const [comments, setComments] = useState([]);
 
@@ -18,7 +19,8 @@ export default function Review() {
     let isMounted = true;
     fetchReviewById(id)
       .then((review) => { if (isMounted) setReview(review) })
-      .then(() => setIsLoading(false));
+      .then(() => setIsLoading(false))
+      .catch((err) => { if (err) setError(true); });
     return () => { isMounted = false };
   }, [id]);
 
@@ -27,6 +29,7 @@ export default function Review() {
       .then((comments) => setComments(comments));
   }, [id]);
 
+  if (error) return <Redirect to="/404" />;
   if (isLoading) return <LoadingSpinner />;
 
   const StyledReview = styled('article', {
@@ -36,17 +39,18 @@ export default function Review() {
       padding: '1rem',
 
       p: {
-        fontSize: '1.25rem',
-        lineHeight: '1.5rem',
-        marginBottom: '1.5rem'
+        fontSize: '$2',
+        lineHeight: '$2',
+        marginBottom: '1rem'
       },
 
       footer: {
+        height: '1.5rem',
         display: 'flex',
         flexFlow: 'row nowrap',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        gap: '1rem'
+        gap: '$small'
       }
     }
   });
@@ -54,7 +58,7 @@ export default function Review() {
   return (
     <section className="content">
       <StyledReview>
-        <Title review={review} showChips />
+        <Title review={review} showChips rounded />
         <div className="content">
           <p>{review.review_body}</p>
           <footer>

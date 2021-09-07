@@ -4,14 +4,14 @@ import Time from '../../atoms/time';
 import Voter from '../../molecules/voter';
 
 const StyledComment = styled('section', {
-  backgroundColor: '$beige',
+  backgroundColor: '$lightBeige',
   padding: '1rem',
-  borderRadius: '1rem',
+  borderRadius: '$corner',
   marginBottom: '1rem',
 
   'p.body': {
-    fontSize: '1.25rem',
-    lineHeight: '1.5rem',
+    fontSize: '$2',
+    lineHeight: '$2',
     marginBottom: '0.75rem'
   },
 
@@ -20,7 +20,7 @@ const StyledComment = styled('section', {
     flexFlow: 'row wrap',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    gap: '1rem'
+    gap: '$small'
   }
 });
 

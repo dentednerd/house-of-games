@@ -32,7 +32,9 @@ export default function Voter({ reviewId, commentId, initialVotes }) {
     },
 
     span: {
-      margin: '0 0.25rem'
+      margin: '0 0.25rem',
+      fontSize: '$0',
+      lineHeight: '$0'
     }
   });
 

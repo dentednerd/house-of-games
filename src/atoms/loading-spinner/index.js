@@ -20,7 +20,7 @@ const StyledSpinner = styled('div', {
     height: '64px',
     margin: '8px',
     border: '8px solid $coral',
-    borderRadius: '50%',
+    borderRadius: '$circle',
     animation: `${spinnerAnim} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite`,
     borderColor: '$coral transparent transparent transparent',
 

@@ -1,11 +1,14 @@
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import globalStyles from './globalStyles';
 import {
+  About,
   Categories,
+  NotFound,
   Reviews,
   Review,
   Users,
@@ -40,6 +43,13 @@ function App() {
           <Route path="/users/:username">
             <UserProfile />
           </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/404">
+            <NotFound />
+          </Route>
+          <Redirect to="/404" />
         </Switch>
       </main>
       <Footer />

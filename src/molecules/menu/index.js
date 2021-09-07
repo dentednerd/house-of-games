@@ -23,7 +23,7 @@ export default function Menu() {
     color: '$white',
     padding: '0 1rem',
 
-    '@media (min-width: 768px)': {
+    '@bp1': {
       padding: '0'
     },
 
@@ -32,7 +32,7 @@ export default function Menu() {
       transform: isMenuOpen ? 'scaleY(-1)' : 'scaleY(1)',
       transition: 'all 0.2s',
 
-      '@media (min-width: 768px)': {
+      '@bp1': {
         display: 'none'
       }
     },
@@ -46,7 +46,7 @@ export default function Menu() {
       padding: '1rem',
       listStyleType: 'none',
 
-      '@media (min-width: 768px)': {
+      '@bp1': {
         display: 'block',
         position: 'relative',
         top: '0',
@@ -54,8 +54,12 @@ export default function Menu() {
       },
 
       li: {
-        '@media (min-width: 768px)': {
-          display: 'inline-block'
+        marginBottom: '0.5rem',
+
+        '@bp1': {
+          display: 'inline-block',
+          marginBottom: 0,
+          marginLeft: '0.5rem'
         }
       }
     }
@@ -66,9 +70,9 @@ export default function Menu() {
       <div className="chevron" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <Chevron />
       </div>
-      <ul>
+      <ul >
         {categories.map((category) => (
-          <li key={category.slug}>
+          <li key={category.slug} onClick={() => setIsMenuOpen(false)}>
             <CategoryChip slug={category.slug} />
           </li>
         ))}

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { styled } from '../stitches.config';
 import { fetchUserByUsername, fetchReviewsByUser } from '../utils/api';
@@ -8,38 +8,37 @@ import Preview from '../molecules/preview';
 export default function UserProfile() {
   let { username } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [user, setUser] = useState({});
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
     fetchUserByUsername(username)
-      .then((user) => { if (isMounted) setUser(user) });
+      .then((user) => { if (isMounted) setUser(user) })
+      .catch((err) => { if (err) setError(true); });
     fetchReviewsByUser(username)
       .then((reviews) => { if (isMounted) setReviews(reviews) })
       .then(() => setIsLoading(false));
     return () => { isMounted = false };
   }, [username]);
 
+  if (error) return <Redirect to="/404" />;
   if (isLoading) return <LoadingSpinner />;
 
   const UserHeader = styled('section', {
     display: 'grid',
     gridTemplateColumns: '3.5rem auto',
-    columnGap: '1rem',
+    columnGap: '$default',
     marginBottom: '1rem',
 
     'div.avatar': {
       img: {
         height: '3.5rem',
         width: '3.5rem',
-        borderRadius: '50%',
-        boxShadow: '0 0 0.25rem $colors$navy'
+        borderRadius: '$circle',
+        boxShadow: '$default'
       },
-    },
-
-    h2: {
-      fontFamily: '"Bubblegum Sans", sans-serif'
     }
   });
 
@@ -56,7 +55,7 @@ export default function UserProfile() {
       </UserHeader>
       <section>
         {reviews.map((review) => (
-          <Preview review={review} />
+          <Preview review={review} key={review.review_id} />
         ))}
       </section>
     </section>

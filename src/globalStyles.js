@@ -19,7 +19,7 @@ const globalStyles = globalCss({
   },
 
   main: {
-    backgroundColor: '$white',
+    backgroundColor: '$lightNavy',
     width: '100%',
 
     'section.content': {
@@ -28,6 +28,31 @@ const globalStyles = globalCss({
       padding: '1rem',
       minHeight: '100vh'
     }
+  },
+
+  p: {
+    marginBottom: '1.2rem'
+  },
+
+  h1: {
+    display: 'inline',
+    fontFamily: '$bubblegum',
+    fontSize: '$4',
+    padding: '0',
+    margin: '0'
+  },
+
+  h2: {
+    fontFamily: '$bubblegum'
+  },
+
+  h3: {
+    fontFamily: '$bubblegum'
+  },
+
+  a: {
+    color: '$coral',
+    textDecoration: 'none'
   }
 });
 

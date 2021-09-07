@@ -5,16 +5,33 @@ import CategoryChip from '../../atoms/category-chip';
 import Title from '../title';
 
 const StyledPreview = styled('section', {
-  backgroundColor: '$lightNavy',
-  borderRadius: '1rem',
+  backgroundColor: '$white',
+  borderRadius: '$corner',
   display: 'grid',
-  gridTemplateColumns: '2fr 1fr',
+  gridTemplateRows: '2fr 1fr',
+  gridTemplateColumns: '1fr',
   width: '100%',
   maxWidth: '800px',
   marginBottom: '1rem',
+  boxShadow: '$wide',
+  overflow: 'hidden',
+  transition: '$all',
 
-  '@supports (aspect-ratio: 24 / 9)': {
-    aspectRatio: '24 / 9',
+  '&:hover': {
+    boxShadow: '$default'
+  },
+
+  '@supports (aspect-ratio: 16 / 13.5)': {
+    aspectRatio: '16 / 13.5',
+  },
+
+  '@bp1': {
+    gridTemplateRows: '1fr',
+    gridTemplateColumns: '2fr 1fr',
+
+    '@supports (aspect-ratio: 24 / 9)': {
+      aspectRatio: '24 / 9',
+    },
   },
 
   'a.title': {
@@ -23,10 +40,15 @@ const StyledPreview = styled('section', {
 
   'div.content': {
     display: 'flex',
-    flexFlow: 'column nowrap',
+    flexFlow: 'row nowrap',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '1rem'
+    gap: '$default',
+    padding: '1rem',
+
+    '@bp1': {
+      flexFlow: 'column nowrap'
+    }
   }
 });
 

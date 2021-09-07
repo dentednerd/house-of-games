@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import usePrevious from '../hooks/usePrevious';
 import { styled } from '../stitches.config';
@@ -11,6 +11,7 @@ import Pagination from '../molecules/pagination';
 function Reviews() {
   let { category } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
   const prevCategory = usePrevious(category);
@@ -18,8 +19,9 @@ function Reviews() {
   useEffect(() => {
     let isMounted = true;
     fetchReviews(category, page)
-      .then((reviews) => { if (isMounted) setReviews(reviews) })
-      .then(() => setIsLoading(false));
+      .then((reviews) => { if (isMounted) setReviews(reviews); })
+      .then(() => setIsLoading(false))
+      .catch((err) => { if (err) setError(true) });
     return () => isMounted = false;
   }, [category, page]);
 
@@ -29,14 +31,14 @@ function Reviews() {
     }
   }, [category, prevCategory]);
 
+  if (error) return <Redirect to="/404" />;
   if (isLoading) return <LoadingSpinner />;
 
   const CategoryTitle = styled('h2', {
-    fontSize: '2rem',
-    lineHeight: '2.2rem',
+    fontSize: '$5',
+    lineHeight: '$5',
     marginBottom: '1rem',
-    fontFamily: '"Bubblegum Sans", sans-serif'
-  })
+  });
 
   return (
     <section className="content">

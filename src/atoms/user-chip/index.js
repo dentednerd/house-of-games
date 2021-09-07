@@ -7,12 +7,10 @@ export default function UserChip({ username }) {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    if (!username) return;
-    let isMounted = true;
-    username && fetchUserByUsername(username)
-      .then((user) => { if (isMounted) setUser(user) })
+    fetchUserByUsername(username)
+      .then((user) => { setUser(user) })
       .then(() => setIsLoading(false));
-    return () => { isMounted = false };
+    return;
   }, [username]);
 
   if (isLoading) return null;
