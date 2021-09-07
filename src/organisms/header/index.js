@@ -1,24 +1,38 @@
 import { styled } from '../../stitches.config';
+import Menu from '../../molecules/menu';
 
 const StyledHeader = styled('header', {
+  display: 'flex',
+  flexFlow: 'row nowrap',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  height: '3rem',
   width: 'calc(100% - 2rem)',
-  height: '0',
   backgroundColor: '$navy',
   padding: '1rem',
   color: '$white',
 
+  a: {
+    textDecoration: 'none',
+    color: '$white'
+  },
+
   h1: {
+    display: 'inline',
     fontFamily: '"Bubblegum Sans", sans-serif',
-    lineHeight: '1',
+    fontSize: '1.75rem',
     padding: '0',
-    margin: '0',
+    margin: '0'
   }
 });
 
 export default function Header() {
   return (
     <StyledHeader>
-      <h1>Joey's House of Games</h1>
+      <a href="/">
+        <h1>DentedNerd's House of Games</h1>
+      </a>
+      <Menu />
     </StyledHeader>
   );
 };

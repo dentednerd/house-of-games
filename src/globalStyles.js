@@ -24,8 +24,9 @@ const globalStyles = globalCss({
 
     'section.content': {
       maxWidth: '800px',
-      margin: '2rem auto 0',
+      margin: '0 auto',
       padding: '1rem',
+      minHeight: '100vh'
     }
   }
 });

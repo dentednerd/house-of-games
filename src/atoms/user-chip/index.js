@@ -1,26 +1,25 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { fetchUserByUsername } from '../../utils/api';
 import Chip from '../chip';
 
 export default function UserChip({ username }) {
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    username && axios({
-      method: 'get',
-      url: `https://nc-games-sql-dentednerd.herokuapp.com/api/users/${username}`
-    }).then((response) => {
-      setUser(response.data.user);
-    });
-    return; // need cancel token
+    if (!username) return;
+    let isMounted = true;
+    username && fetchUserByUsername(username)
+      .then((user) => { if (isMounted) setUser(user) })
+      .then(() => setIsLoading(false));
+    return () => { isMounted = false };
   }, [username]);
 
-  if (!user || !user.username) return null;
+  if (isLoading) return null;
 
   return (
     <Chip
       color="coral"
-      outlined
       to={`/users/${user.username}`}
       img={user.avatar_url}
       text={user.username}

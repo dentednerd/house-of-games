@@ -19,11 +19,11 @@ export default function Title({ review, showChips }) {
       fontFamily: '"Bubblegum Sans", sans-serif',
       textAlign: 'center',
       color: 'white',
-      textShadow: '0 0 0.25rem $colors$navy, 0 0 1rem $colors$navy',
-      fontSize: '8vw',
+      textShadow: '0 0 0.1rem $colors$black, 0 0 0.25rem $colors$navy, 0 0 1rem $colors$navy',
+      fontSize: '1.5rem',
 
       '@media(min-width:800px)': {
-        fontSize: '4rem'
+        fontSize: '2rem'
       }
     },
 
@@ -45,7 +45,6 @@ export default function Title({ review, showChips }) {
       {showChips && (
         <div className="chips">
           <UserChip username={review.owner} />
-          {/* <TimeChip timestamp={review.created_at} /> */}
           <CategoryChip slug={review.category} />
         </div>
       )}

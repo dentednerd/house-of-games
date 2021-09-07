@@ -18,7 +18,10 @@ yarn start
 ## todo
 
 - [x] implement votes
-- [ ] implement pagination
+- [x] implement pagination
 - [x] implement user profiles
+- [ ] implement nav menu, mob first
 - [ ] implement login (fake it at first)
 - [ ] BACKEND: implement routes for reviews/comments by user
+- [ ] what to put in the footer?
+- [x] implement loading spinner

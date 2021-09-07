@@ -1,42 +1,50 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import usePrevious from '../hooks/usePrevious';
 import { styled } from '../stitches.config';
+import { formatTitle } from '../utils';
 import { fetchReviews } from '../utils/api.js';
-import Title from '../molecules/title';
+import LoadingSpinner from '../atoms/loading-spinner';
+import Preview from '../molecules/preview';
+import Pagination from '../molecules/pagination';
 
 function Reviews() {
   let { category } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
+  const [page, setPage] = useState(1);
+  const prevCategory = usePrevious(category);
 
   useEffect(() => {
-    fetchReviews(category).then((reviews) => {
-      if (category) {
-        const filteredByCategory = reviews.filter((review) => {
-          return review.category === category;
-        });
-        setReviews(filteredByCategory);
-      } else {
-        setReviews(reviews);
-      }
-    })
-    return;
-  }, [category]);
+    let isMounted = true;
+    fetchReviews(category, page)
+      .then((reviews) => { if (isMounted) setReviews(reviews) })
+      .then(() => setIsLoading(false));
+    return () => isMounted = false;
+  }, [category, page]);
 
-  if (!reviews) return null;
+  useEffect(() => {
+    if (category !== prevCategory) {
+      setPage(1);
+    }
+  }, [category, prevCategory]);
 
-  const StyledLink = styled(Link, {
-    display: 'block',
-    textDecoration: 'none',
-    marginBottom: '1rem'
-  });
+  if (isLoading) return <LoadingSpinner />;
+
+  const CategoryTitle = styled('h2', {
+    fontSize: '2rem',
+    lineHeight: '2.2rem',
+    marginBottom: '1rem',
+    fontFamily: '"Bubblegum Sans", sans-serif'
+  })
 
   return (
     <section className="content">
+      {category && <CategoryTitle>{formatTitle(category)}</CategoryTitle>}
       {reviews.map((review) => (
-        <StyledLink to={`/review/${review.review_id}`} key={review.review_id}>
-          <Title review={review} />
-        </StyledLink>
+        <Preview key={review.review_id} review={review} />
       ))}
+      <Pagination page={page} setPage={setPage} pageLength={reviews.length} />
     </section>
   );
 }
