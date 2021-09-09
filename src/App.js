@@ -5,6 +5,7 @@ import {
   Redirect
 } from "react-router-dom";
 import globalStyles from './globalStyles';
+import UserProvider from './hooks/UserContext';
 import {
   About,
   Categories,
@@ -21,39 +22,41 @@ function App() {
   globalStyles();
 
   return (
-    <Router>
-      <Header />
-      <main>
-        <Switch>
-          <Route exact path="/">
-            <Reviews />
-          </Route>
-          <Route path="/categories">
-            <Categories />
-          </Route>
-          <Route exact path="/users">
-            <Users />
-          </Route>
-          <Route path="/category/:category">
-            <Reviews />
-          </Route>
-          <Route path="/review/:id">
-            <Review />
-          </Route>
-          <Route path="/users/:username">
-            <UserProfile />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/404">
-            <NotFound />
-          </Route>
-          <Redirect to="/404" />
-        </Switch>
-      </main>
-      <Footer />
-    </Router>
+    <UserProvider>
+      <Router>
+        <Header />
+        <main>
+          <Switch>
+            <Route exact path="/">
+              <Reviews />
+            </Route>
+            <Route path="/categories">
+              <Categories />
+            </Route>
+            <Route exact path="/users">
+              <Users />
+            </Route>
+            <Route path="/category/:category">
+              <Reviews />
+            </Route>
+            <Route path="/review/:id">
+              <Review />
+            </Route>
+            <Route path="/users/:username">
+              <UserProfile />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/404">
+              <NotFound />
+            </Route>
+            <Redirect to="/404" />
+          </Switch>
+        </main>
+        <Footer />
+      </Router>
+    </UserProvider>
   );
 }
 

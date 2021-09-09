@@ -11,9 +11,8 @@ export default function Chip({ to, text, img, color }) {
     alignItems: 'center',
     color: '$white',
     borderRadius: '$corner',
-    height: '1rem',
-    fontSize: '$0',
-    lineHeight: '$0',
+    fontSize: '$1',
+    lineHeight: '$1',
     textDecoration: 'none',
     boxShadow: '$default',
 
@@ -31,12 +30,11 @@ export default function Chip({ to, text, img, color }) {
     img: {
       height: '1.5rem',
       width: '1.5rem',
-      borderRadius: '$corner'
+      borderRadius: '$circle'
     },
 
     span: {
-      padding: '0 0.5rem',
-      lineHeight: '$1'
+      padding: '0 0.5rem 0.1875rem',
     }
   });
 

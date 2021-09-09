@@ -1,9 +1,16 @@
 import { useParams, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { styled } from '../stitches.config';
-import { fetchUserByUsername, fetchReviewsByUser } from '../utils/api';
+import {
+  fetchUserByUsername,
+  fetchReviewsByUser,
+  fetchCommentsByUser
+} from '../utils/api';
 import LoadingSpinner from '../atoms/loading-spinner';
-import Preview from '../molecules/preview';
+import ReviewLink from '../atoms/review-link';
+import UserHeader from '../atoms/user-header';
+import Card from '../molecules/card';
+import Comment from '../molecules/comment';
 
 export default function UserProfile() {
   let { username } = useParams();
@@ -11,53 +18,86 @@ export default function UserProfile() {
   const [error, setError] = useState(false);
   const [user, setUser] = useState({});
   const [reviews, setReviews] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
+
     fetchUserByUsername(username)
       .then((user) => { if (isMounted) setUser(user) })
       .catch((err) => { if (err) setError(true); });
+
     fetchReviewsByUser(username)
       .then((reviews) => { if (isMounted) setReviews(reviews) })
+      .catch((err) => { if (err) setError(true); });
+
+    fetchCommentsByUser(username)
+      .then((comments) => { if (isMounted) setComments(comments) })
       .then(() => setIsLoading(false));
     return () => { isMounted = false };
   }, [username]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   if (error) return <Redirect to="/404" />;
   if (isLoading) return <LoadingSpinner />;
 
-  const UserHeader = styled('section', {
+  const ProfileGrid = styled('section', {
     display: 'grid',
-    gridTemplateColumns: '3.5rem auto',
-    columnGap: '$default',
-    marginBottom: '1rem',
+    gridTemplateColumns: '1fr',
+    gap: '1rem',
+    margin: '1rem 0',
 
-    'div.avatar': {
-      img: {
-        height: '3.5rem',
-        width: '3.5rem',
-        borderRadius: '$circle',
-        boxShadow: '$default'
-      },
+    '@bp1': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    },
+
+    variants: {
+      box: {
+        true: {
+          padding: '1rem',
+          borderRadius: '$corner',
+          backgroundColor: '$white',
+          boxShadow: '$wide'
+        }
+      }
     }
   });
 
   return (
     <section className="content">
-      <UserHeader>
-        <div className="avatar">
-          <img src={user.avatar_url} alt={user.name} />
-        </div>
-        <div>
-          <h2>{user.name}</h2>
-          <h3>{user.username}</h3>
-        </div>
-      </UserHeader>
-      <section>
+      <UserHeader user={user} />
+
+      <ProfileGrid>
         {reviews.map((review) => (
-          <Preview review={review} key={review.review_id} />
+          <Card
+            key={review.review_id}
+            review={review}
+            hideUser
+          />
         ))}
-      </section>
+      </ProfileGrid>
+
+      <ProfileGrid box>
+        {comments.map((comment) => (
+          <section key={comment.comment_id}>
+            <p>
+              {user.username}
+              &nbsp;on&nbsp;
+              <ReviewLink reviewId={comment.review_id} />
+              ...
+            </p>
+            <Comment
+              comment={comment}
+              comments={comments}
+              setComments={setComments}
+              hideUser
+            />
+          </section>
+        ))}
+      </ProfileGrid>
     </section>
   );
 }

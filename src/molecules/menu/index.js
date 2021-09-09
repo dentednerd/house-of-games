@@ -23,22 +23,17 @@ export default function Menu() {
     color: '$white',
     padding: '0 1rem',
 
-    '@bp1': {
-      padding: '0'
-    },
-
     'div.chevron': {
       width: '2rem',
       transform: isMenuOpen ? 'scaleY(-1)' : 'scaleY(1)',
       transition: 'all 0.2s',
-
-      '@bp1': {
-        display: 'none'
-      }
     },
 
     ul: {
-      display: isMenuOpen ? 'block' : 'none',
+      display: isMenuOpen ? 'flex' : 'none',
+      flexFlow: 'column nowrap',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
       backgroundColor: '$navy',
       position: 'absolute',
       top: '5rem',
@@ -46,21 +41,8 @@ export default function Menu() {
       padding: '1rem',
       listStyleType: 'none',
 
-      '@bp1': {
-        display: 'block',
-        position: 'relative',
-        top: '0',
-        right: '0'
-      },
-
       li: {
         marginBottom: '0.5rem',
-
-        '@bp1': {
-          display: 'inline-block',
-          marginBottom: 0,
-          marginLeft: '0.5rem'
-        }
       }
     }
   });

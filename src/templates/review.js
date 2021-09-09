@@ -1,11 +1,15 @@
 import { useParams, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { styled } from '../stitches.config';
-import { fetchReviewById, fetchCommentsByReviewId } from '../utils/api';
+import {
+  fetchReviewById,
+  fetchCommentsByReviewId,
+} from '../utils/api';
 import LoadingSpinner from '../atoms/loading-spinner';
 import Time from '../atoms/time';
+import AddComment from '../molecules/add-comment';
 import Comment from '../molecules/comment';
-import Title from '../molecules/title';
+import Card from '../molecules/card';
 import Voter from '../molecules/voter';
 
 export default function Review() {
@@ -19,15 +23,20 @@ export default function Review() {
     let isMounted = true;
     fetchReviewById(id)
       .then((review) => { if (isMounted) setReview(review) })
-      .then(() => setIsLoading(false))
       .catch((err) => { if (err) setError(true); });
     return () => { isMounted = false };
   }, [id]);
 
   useEffect(() => {
+    if (error) return;
     fetchCommentsByReviewId(id)
-      .then((comments) => setComments(comments));
-  }, [id]);
+      .then((comments) => setComments(comments))
+      .then(() => setIsLoading(false));
+  }, [id, error]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   if (error) return <Redirect to="/404" />;
   if (isLoading) return <LoadingSpinner />;
@@ -58,7 +67,7 @@ export default function Review() {
   return (
     <section className="content">
       <StyledReview>
-        <Title review={review} showChips rounded />
+        <Card review={review} />
         <div className="content">
           <p>{review.review_body}</p>
           <footer>
@@ -67,8 +76,18 @@ export default function Review() {
           </footer>
         </div>
       </StyledReview>
+      <AddComment
+        reviewId={review.review_id}
+        comments={comments}
+        setComments={setComments}
+      />
       {comments.sort((a, b) => b.votes - a.votes).map((comment) => (
-        <Comment key={comment.comment_id} comment={comment} />
+        <Comment
+          key={comment.comment_id}
+          comment={comment}
+          comments={comments}
+          setComments={setComments}
+        />
       ))}
     </section>
   );

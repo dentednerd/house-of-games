@@ -29,21 +29,18 @@ const StyledFooter = styled('footer', {
 export default function Footer() {
   return (
     <StyledFooter>
-      <div>
-        <h2>dentednerd's House of Games</h2>
-        <ul>
-          <li>
-            <Link to="/about">What's this then?</Link>
-          </li>
-          <li>
-            <a href="https://joeyimlay.dev">Who is dentednerd?</a>
-          </li>
-          <li>
-            <a href="https://www.northcoders.com">What is Northcoders?</a>
-          </li>
-        </ul>
-      </div>
-      <div />
+      <h2>dentednerd's House of Games</h2>
+      <ul>
+        <li>
+          <Link to="/about">What's this then?</Link>
+        </li>
+        <li>
+          <a href="https://joeyimlay.dev">Who is dentednerd?</a>
+        </li>
+        <li>
+          <a href="https://www.northcoders.com">What is Northcoders?</a>
+        </li>
+      </ul>
     </StyledFooter>
-  )
+  );
 }

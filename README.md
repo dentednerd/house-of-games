@@ -14,6 +14,7 @@ yarn start
 ## notes
 
 - This is my first project using [Stitches](https://stitches.dev/). Really like how easy it is to configure an entire theme.
+- Icons are from [Icons8](https://icons8.com/).
 
 ## todo
 
@@ -21,10 +22,12 @@ yarn start
 - [x] implement pagination
 - [x] implement user profiles
 - [x] implement nav menu, mob first
-- [ ] implement login (fake it at first)
+- [x] implement context for logged-in user
+- [ ] implement "login"
 - [x] BACKEND: implement reviews by user
-- [ ] BACKEND: implement comments by user
+- [x] BACKEND: implement comments by user
 - [x] add reviews to user profile
-- [ ] add comments to user profile
+- [x] add comments to user profile
 - [x] what to put in the footer?
 - [x] implement loading spinner
+- [x] do a funky grid design on the homepage
