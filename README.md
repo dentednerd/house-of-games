@@ -1,6 +1,10 @@
 # House of Games
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c621be7b-036a-4f16-8158-6d8e0ffce609/deploy-status)](https://app.netlify.com/sites/dentednerds-house-of-games/deploys)
+
 dentednerd's House of Games is a content rating and discussion website, featuring game reviews categorised by genre. Each review can be up- or down-voted, and users can comment and vote upon each review. This project is created from a sprint on the Northcoders bootcamp.
+
+[dentednerds-house-of-games.netlify.app/](https://dentednerds-house-of-games.netlify.app/)
 
 API: [live](https://nc-games-sql-dentednerd.herokuapp.com/api), [repo](https://github.com/dentednerd/be-nc-games)
 
