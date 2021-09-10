@@ -73,7 +73,7 @@ export default function Menu() {
             </Link>
           </li>
         ))}
-        <li className="logout">
+        <li className="logout" onClick={() => setIsMenuOpen(false)}>
           <Link to='/users'>
             Log out
           </Link>
