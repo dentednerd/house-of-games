@@ -42,15 +42,15 @@ export default function Review() {
   if (isLoading) return <LoadingSpinner />;
 
   const StyledReview = styled('article', {
-    marginBottom: '1rem',
+    marginBottom: '$default',
 
     'div.content': {
-      padding: '1rem',
+      padding: '$default',
 
       p: {
         fontSize: '$2',
         lineHeight: '$2',
-        marginBottom: '1rem'
+        marginBottom: '$default'
       },
 
       footer: {

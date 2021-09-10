@@ -29,7 +29,7 @@ function Users() {
   const UsersGrid = styled('section', {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '1rem',
+    gap: '$default',
 
 
     div: {

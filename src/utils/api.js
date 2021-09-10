@@ -4,12 +4,13 @@ const api = axios.create({
   baseURL: 'https://nc-games-sql-dentednerd.herokuapp.com/api',
 });
 
-export const fetchReviews = async (category, page) => {
+export const fetchReviews = async (category, page, sortBy) => {
   const url = `/reviews`;
   const { data } = await api.get(url, {
     params: {
       category,
-      p: page
+      p: page,
+      sort_by: sortBy
     }
   });
   return data.reviews;

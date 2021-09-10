@@ -20,8 +20,8 @@ const StyledButton = styled('button', {
   variants: {
     goLeft: {
       true: {
-        borderTopLeftRadius: '1rem',
-        borderBottomLeftRadius: '1rem',
+        borderTopLeftRadius: '$corner',
+        borderBottomLeftRadius: '$corner',
         borderTopRightRadius: '0',
         borderBottomRightRadius: '0',
         marginRight: '0.25rem'
@@ -31,20 +31,38 @@ const StyledButton = styled('button', {
       true: {
         borderTopLeftRadius: '0',
         borderBottomLeftRadius: '0',
-        borderTopRightRadius: '1rem',
-        borderBottomRightRadius: '1rem',
+        borderTopRightRadius: '$corner',
+        borderBottomRightRadius: '$corner',
         marginLeft: '0.25rem'
       }
     },
     allRound: {
       true: {
-        borderRadius: '1rem'
+        borderRadius: '$corner'
+      }
+    },
+    sort: {
+      true: {
+        fontFamily: '$barlow',
+        fontSize: '$0',
+        lineHeight: '$0',
+        padding: '0.5rem $space$default',
+        height: 'auto',
+        width: '100%'
       }
     }
   }
 });
 
-export default function Button({ type, text, onClick, goLeft, goRight, allRound }) {
+export default function Button({
+  type,
+  text,
+  onClick,
+  goLeft,
+  goRight,
+  allRound,
+  sort
+}) {
   return (
     <StyledButton
       onClick={onClick}
@@ -52,6 +70,7 @@ export default function Button({ type, text, onClick, goLeft, goRight, allRound 
       goLeft={goLeft}
       goRight={goRight}
       allRound={allRound}
+      sort={sort}
     >
       {text}
     </StyledButton>

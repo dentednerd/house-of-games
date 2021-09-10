@@ -5,7 +5,7 @@ export default function UserHeader({ user }) {
     display: 'grid',
     gridTemplateColumns: '3.5rem auto',
     columnGap: '$default',
-    margin: '1rem',
+    marginBottom: '$default',
 
     'section.avatar': {
       img: {

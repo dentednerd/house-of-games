@@ -25,7 +25,7 @@ export const {
       coral: 'hsl(354, 88%, 70%)',
     },
     fontSizes: {
-      0: '0.75rem',
+      0: '0.875rem',
       1: '1rem',
       2: '1.25rem',
       3: '1.5rem',
@@ -46,7 +46,8 @@ export const {
     },
     space: {
       small: '0.5rem',
-      default: '1rem'
+      default: '1rem',
+      large: '2rem'
     },
     radii: {
       corner: '1rem',

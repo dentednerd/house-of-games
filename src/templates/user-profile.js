@@ -47,8 +47,8 @@ export default function UserProfile() {
   const ProfileGrid = styled('section', {
     display: 'grid',
     gridTemplateColumns: '1fr',
-    gap: '1rem',
-    margin: '1rem 0',
+    gap: '$default',
+    margin: '$space$default 0',
 
     '@bp1': {
       gridTemplateColumns: 'repeat(2, 1fr)',
@@ -57,7 +57,7 @@ export default function UserProfile() {
     variants: {
       box: {
         true: {
-          padding: '1rem',
+          padding: '$default',
           borderRadius: '$corner',
           backgroundColor: '$white',
           boxShadow: '$wide'

@@ -11,10 +11,11 @@ export default function Chip({ to, text, img, color }) {
     alignItems: 'center',
     color: '$white',
     borderRadius: '$corner',
-    fontSize: '$1',
-    lineHeight: '$1',
+    fontSize: '$0',
+    lineHeight: '$0',
     textDecoration: 'none',
     boxShadow: '$default',
+    textAlign: 'center',
 
     variants: {
       color: {

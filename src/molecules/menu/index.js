@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from '../../stitches.config';
+import { formatTitle } from '../../utils';
 import { fetchCategories } from '../../utils/api';
 import Chevron from '../../atoms/chevron';
-import CategoryChip from '../../atoms/category-chip';
 
 export default function Menu() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,12 +22,13 @@ export default function Menu() {
 
   const StyledMenu = styled('nav', {
     color: '$white',
-    padding: '0 1rem',
+    padding: '0 $space$default',
 
     'div.chevron': {
       width: '2rem',
       transform: isMenuOpen ? 'scaleY(-1)' : 'scaleY(1)',
       transition: 'all 0.2s',
+      cursor: 'pointer'
     },
 
     ul: {
@@ -38,11 +40,22 @@ export default function Menu() {
       position: 'absolute',
       top: '5rem',
       right: '0',
-      padding: '1rem',
+      padding: '$default',
       listStyleType: 'none',
 
       li: {
+        fontFamily: '$bubblegum',
+        fontSize: '$2',
+        lineHeight: '$2',
         marginBottom: '0.5rem',
+
+        '&.logout': {
+          width: '100%',
+          borderTop: 'solid 1px white',
+          textAlign: 'center',
+          paddingTop: '0.5rem',
+          marginTop: '0.5rem'
+        }
       }
     }
   });
@@ -55,10 +68,17 @@ export default function Menu() {
       <ul >
         {categories.map((category) => (
           <li key={category.slug} onClick={() => setIsMenuOpen(false)}>
-            <CategoryChip slug={category.slug} />
+            <Link to={`/category/${category.slug}`}>
+              {formatTitle(category.slug)}
+            </Link>
           </li>
         ))}
+        <li className="logout">
+          <Link to='/users'>
+            Log out
+          </Link>
+        </li>
       </ul>
     </StyledMenu>
-  )
+  );
 }

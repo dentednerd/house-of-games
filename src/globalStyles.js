@@ -25,7 +25,7 @@ const globalStyles = globalCss({
     'section.content': {
       maxWidth: '800px',
       margin: '0 auto',
-      padding: '1rem',
+      padding: '$default',
       minHeight: '100vh'
     }
   },

@@ -5,7 +5,7 @@ const StyledFooter = styled('footer', {
   width: 'calc(100% - 2rem)',
   background: '$navy',
   color: '$white',
-  padding: '1rem',
+  padding: '$default',
   display: 'grid',
   gridTemplateRows: 'repeat(2, 1fr)',
   gridTemplateColumns: '1fr',

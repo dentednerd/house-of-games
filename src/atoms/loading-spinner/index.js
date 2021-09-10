@@ -10,7 +10,7 @@ const StyledSpinner = styled('div', {
   position: 'relative',
   width: '80px',
   height: '80px',
-  margin: '1rem auto',
+  margin: '$space$default auto',
 
   div: {
     boxSizing: 'border-box',

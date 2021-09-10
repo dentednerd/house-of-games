@@ -28,12 +28,12 @@ export default function AddComment({
   const StyledForm = styled('form', {
     backgroundColor: '$white',
     borderRadius: '$corner',
-    padding: '1rem',
-    marginBottom: '1rem',
+    padding: '$default',
+    marginBottom: '$default',
     display: 'grid',
     gridTemplateRows: 'repeat(2, auto)',
     gridTemplateColumns: '1fr',
-    gap: '1rem',
+    gap: '$default',
     justifyItems: 'center',
     alignItems: 'center',
 
@@ -50,7 +50,7 @@ export default function AddComment({
       fontSize: '$2',
       color: '$navy',
       width: '100%',
-      margin: '0 1rem',
+      margin: '0 $space$default',
     }
   });
 

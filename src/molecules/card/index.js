@@ -51,7 +51,7 @@ export default function Card({ review, hideUser }) {
       justifyContent: 'center',
       alignItems: 'center',
       gap: '$default',
-      padding: '1rem',
+      padding: '$default',
     }
   });
 
@@ -60,7 +60,7 @@ export default function Card({ review, hideUser }) {
     backgroundSize: 'cover',
     backgroundClip: 'border-box',
     backgroundPosition: 'center',
-    padding: '1rem',
+    padding: '$default',
     display: 'flex',
     flexFlow: 'column nowrap',
     justifyContent: 'center',

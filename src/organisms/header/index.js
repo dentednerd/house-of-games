@@ -9,11 +9,11 @@ const StyledHeader = styled('header', {
   flexFlow: 'row nowrap',
   justifyContent: 'space-between',
   alignItems: 'center',
-  gap: '1rem',
+  gap: '$default',
   height: '3rem',
   width: 'calc(100% - 2rem)',
   backgroundColor: '$navy',
-  padding: '1rem',
+  padding: '$default',
   color: '$white',
 
 

@@ -11,9 +11,9 @@ import Voter from '../../molecules/voter';
 
 const StyledComment = styled('section', {
   backgroundColor: '$lightBeige',
-  padding: '1rem',
+  padding: '$default',
   borderRadius: '$corner',
-  marginBottom: '1rem',
+  marginBottom: '$default',
 
   'p.body': {
     fontSize: '$2',

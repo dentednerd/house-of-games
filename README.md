@@ -1,6 +1,12 @@
 # House of Games
 
+dentednerd's House of Games is a content rating and discussion website, featuring game reviews categorised by genre. Each review can be up- or down-voted, and users can comment and vote upon each review. This project is created from a sprint on the Northcoders bootcamp.
+
 API: [live](https://nc-games-sql-dentednerd.herokuapp.com/api), [repo](https://github.com/dentednerd/be-nc-games)
+
+## requirements
+
+- Node v14.17.3
 
 ## installation
 
@@ -23,7 +29,7 @@ yarn start
 - [x] implement user profiles
 - [x] implement nav menu, mob first
 - [x] implement context for logged-in user
-- [ ] implement "login"
+- [x] implement "login"
 - [x] BACKEND: implement reviews by user
 - [x] BACKEND: implement comments by user
 - [x] add reviews to user profile
@@ -31,3 +37,5 @@ yarn start
 - [x] what to put in the footer?
 - [x] implement loading spinner
 - [x] do a funky grid design on the homepage
+- [x] implement sorting on homepage
+- [ ] implement sorting on comments sections
