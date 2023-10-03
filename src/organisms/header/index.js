@@ -35,9 +35,9 @@ export default function Header() {
 
   return (
     <StyledHeader>
-      <a href="/">
+      <Link to="/">
         <h1>dentednerd's House of Games</h1>
-      </a>
+      </Link>
       <section>
         <Link to={`/users/${username}`}>
           <Avatar avatarUrl={avatar_url} username={username} />

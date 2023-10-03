@@ -6,7 +6,7 @@ dentednerd's House of Games is a content rating and discussion website, featurin
 
 [dentednerds-house-of-games.netlify.app/](https://dentednerds-house-of-games.netlify.app/)
 
-API: [live](https://nc-games-sql-dentednerd.herokuapp.com/api), [repo](https://github.com/dentednerd/be-nc-games)
+API: [live](https://nc-games-finale.fly.dev), [repo](https://github.com/dentednerd/nc-games-sql)
 
 ## requirements
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://nc-games-sql-dentednerd.herokuapp.com/api',
+  baseURL: 'https://nc-games-finale.fly.dev/api',
 });
 
 export const fetchReviews = async (category, page, sortBy) => {
