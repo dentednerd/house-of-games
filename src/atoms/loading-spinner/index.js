@@ -40,7 +40,7 @@ const StyledSpinner = styled('div', {
 
 export default function LoadingSpinner() {
   return (
-    <section className="content">
+    <section className="wrapper">
       <StyledSpinner>
         <div />
         <div />

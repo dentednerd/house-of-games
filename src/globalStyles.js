@@ -7,7 +7,7 @@ const globalStyles = globalCss({
   },
 
   body: {
-    backgroundColor: '$navy',
+    backgroundColor: '$lightNavy',
     color: '$navy',
     padding: '0',
     margin: '0',
@@ -21,13 +21,18 @@ const globalStyles = globalCss({
   main: {
     backgroundColor: '$lightNavy',
     width: '100%',
+    margin: '6rem 0',
 
     'section.content': {
       maxWidth: '800px',
       margin: '0 auto',
       padding: '$default',
-      minHeight: '100vh'
-    }
+    },
+
+    'section.wrapper': {
+      maxWidth: '800px',
+      marginInline: 'auto',
+    },
   },
 
   p: {
@@ -51,7 +56,7 @@ const globalStyles = globalCss({
   },
 
   a: {
-    color: '$coral',
+    color: '$link',
     textDecoration: 'none'
   }
 });

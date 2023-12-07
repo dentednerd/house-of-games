@@ -44,8 +44,8 @@ export default function Review() {
   const StyledReview = styled('article', {
     marginBottom: '$default',
 
-    'div.content': {
-      padding: '$default',
+    'div.contentBody': {
+      padding: '$default 0',
 
       p: {
         fontSize: '$2',
@@ -68,7 +68,7 @@ export default function Review() {
     <section className="content">
       <StyledReview>
         <Card review={review} />
-        <div className="content">
+        <div className="contentBody">
           <p>{review.review_body}</p>
           <footer>
             <Time timestamp={review.created_at} />

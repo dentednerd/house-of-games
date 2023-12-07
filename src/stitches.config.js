@@ -23,6 +23,7 @@ export const {
       navy: 'hsl(208, 40%, 35%)',
       purple: 'hsl(272, 15%, 52%)',
       coral: 'hsl(354, 88%, 70%)',
+      link: 'hsl(11, 85%, 34%)'
     },
     fontSizes: {
       0: '0.875rem',

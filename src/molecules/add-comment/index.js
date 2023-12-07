@@ -13,6 +13,8 @@ export default function AddComment({
   const inputRef = useRef(null);
   const [newComment, setNewComment] = useState('');
 
+  if (!username) return null;
+
   const handleChange = () => {
     setNewComment(inputRef.current.value);
   }

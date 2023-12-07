@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { styled } from '../../stitches.config';
-import {
-  fetchUserByUsername,
-} from '../../utils/api';
+import { fetchUserByUsername } from '../../utils/api';
 import LoadingSpinner from '../../atoms/loading-spinner';
 import UserChip from '../../atoms/user-chip';
 import CategoryChip from '../../atoms/category-chip';
@@ -11,20 +9,19 @@ import CategoryChip from '../../atoms/category-chip';
 export default function Card({ review, hideUser }) {
   const [isLoading, setIsLoading] = useState(true);
   const [author, setAuthor] = useState({});
-  const history = useHistory();
 
   useEffect(() => {
     if (!review.owner) return;
     let isMounted = true;
     fetchUserByUsername(review.owner)
-    .then((user) => { if (isMounted) setAuthor(user) })
-    .then(() => setIsLoading(false));
-    return () => isMounted = false;
-  }, [review]);
+      .then((user) => { if (isMounted) setAuthor(user) })
+      .then(() => setIsLoading(false));
+      return () => isMounted = false;
+  }, [review.owner]);
 
   if (!review || isLoading) return <LoadingSpinner />;
 
-  const StyledCard = styled('section', {
+  const StyledCard = styled(Link, {
     backgroundColor: '$white',
     borderRadius: '$corner',
     display: 'grid',
@@ -45,7 +42,7 @@ export default function Card({ review, hideUser }) {
       textDecoration: 'none',
     },
 
-    'div.content': {
+    'div.cardContent': {
       display: 'flex',
       flexFlow: 'row wrap',
       justifyContent: 'center',
@@ -80,15 +77,14 @@ export default function Card({ review, hideUser }) {
   });
 
   return (
-    <StyledCard onClick={() => history.push(`/review/${review.review_id}`)}>
+    <StyledCard to={`/review/${review.review_id}`}>
       <StyledTitle>
         <h2>{review.title}</h2>
-        <div className="content">
-          {!hideUser && <UserChip user={author} username={review.owner} />}
-          <CategoryChip slug={review.category} />
+        <div className="cardContent">
+          {!hideUser && <UserChip user={author} notLink />}
+          <CategoryChip slug={review.category} notLink />
         </div>
       </StyledTitle>
-
     </StyledCard>
   );
 }

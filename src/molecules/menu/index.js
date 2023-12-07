@@ -43,18 +43,19 @@ export default function Menu() {
       padding: '$default',
       listStyleType: 'none',
 
+      '@media(min-width: 800px)': {
+        right: 'calc(50vw - 400px)',
+      },
+
       li: {
         fontFamily: '$bubblegum',
         fontSize: '$2',
         lineHeight: '$2',
         marginBottom: '0.5rem',
 
-        '&.logout': {
+        '&.divider': {
           width: '100%',
-          borderTop: 'solid 1px white',
-          textAlign: 'center',
-          paddingTop: '0.5rem',
-          marginTop: '0.5rem'
+          margin: '1rem 0'
         }
       }
     }
@@ -65,20 +66,28 @@ export default function Menu() {
       <div className="chevron" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <Chevron />
       </div>
-      <ul >
-        {categories.map((category) => (
-          <li key={category.slug} onClick={() => setIsMenuOpen(false)}>
-            <Link to={`/category/${category.slug}`}>
-              {formatTitle(category.slug)}
+        <ul>
+          {categories.map((category) => (
+            <li key={category.slug} onClick={() => setIsMenuOpen(false)}>
+              <Link to={`/category/${category.slug}`}>
+                {formatTitle(category.slug)}
+              </Link>
+            </li>
+          ))}
+          <li className="divider">
+            <hr />
+          </li>
+          <li>
+            <Link to='/about'>
+              About
             </Link>
           </li>
-        ))}
-        <li className="logout" onClick={() => setIsMenuOpen(false)}>
-          <Link to='/users'>
-            Log out
-          </Link>
-        </li>
-      </ul>
+          <li onClick={() => setIsMenuOpen(false)}>
+            <Link to='/users'>
+              Log out
+            </Link>
+          </li>
+        </ul>
     </StyledMenu>
   );
 }

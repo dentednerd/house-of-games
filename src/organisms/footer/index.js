@@ -1,19 +1,21 @@
-import { Link } from 'react-router-dom';
 import { styled } from '../../stitches.config';
 
 const StyledFooter = styled('footer', {
+  position: 'fixed',
+  bottom: '0',
   width: 'calc(100% - 2rem)',
   background: '$navy',
   color: '$white',
   padding: '$default',
-  display: 'grid',
-  gridTemplateRows: 'repeat(2, 1fr)',
-  gridTemplateColumns: '1fr',
-  gap: '$default',
 
-  '@media(min-width: 768px)': {
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gridTemplateRows: '1fr'
+  'section.wrapper': {
+    maxWidth: '800px',
+    marginInline: 'auto',
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '$default',
   },
 
   ul: {
@@ -29,18 +31,11 @@ const StyledFooter = styled('footer', {
 export default function Footer() {
   return (
     <StyledFooter>
-      <h2>dentednerd's House of Games</h2>
-      <ul>
-        <li>
-          <Link to="/about">What's this then?</Link>
-        </li>
-        <li>
-          <a href="https://joeyimlay.dev">Who is dentednerd?</a>
-        </li>
-        <li>
-          <a href="https://www.northcoders.com">What is Northcoders?</a>
-        </li>
-      </ul>
+      <section className="wrapper">
+        <a href="https://joeyimlay.dev">
+          <h2>joeyimlay.dev</h2>
+        </a>
+      </section>
     </StyledFooter>
   );
 }

@@ -18,7 +18,7 @@ export function UpdateUser() {
 }
 
 export default function UserProvider({ children }) {
-  const firstUser = window.localStorage.getItem('currentUser') || 'happyamy2016';
+  const firstUser = window.localStorage.getItem('house-of-games-current-user') || 'happyamy2016';
   const [username, setUsername] = useState(firstUser);
   const [loggedInUser, setLoggedInUser] = useState({});
 
@@ -26,7 +26,7 @@ export default function UserProvider({ children }) {
     fetchUserByUsername(username)
       .then((user) => {
         setLoggedInUser(user);
-        window.localStorage.setItem('currentUser', username);
+        window.localStorage.setItem('house-of-games-current-user', username);
       });
   }, [username])
 

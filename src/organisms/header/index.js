@@ -5,17 +5,23 @@ import Avatar from '../../atoms/avatar';
 import Menu from '../../molecules/menu';
 
 const StyledHeader = styled('header', {
-  display: 'flex',
-  flexFlow: 'row nowrap',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '$default',
+  position: 'fixed',
+  top: '0',
   height: '3rem',
   width: 'calc(100% - 2rem)',
   backgroundColor: '$navy',
   padding: '$default',
   color: '$white',
 
+  'section.wrapper': {
+    maxWidth: '800px',
+    marginInline: 'auto',
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '$default',
+  },
 
   a: {
     textDecoration: 'none',
@@ -31,18 +37,21 @@ const StyledHeader = styled('header', {
 });
 
 export default function Header() {
-  const { username, avatar_url } = GetUser();
+  const user = GetUser();
+  if (!user) return null;
 
   return (
     <StyledHeader>
-      <Link to="/">
-        <h1>dentednerd's House of Games</h1>
-      </Link>
-      <section>
-        <Link to={`/users/${username}`}>
-          <Avatar avatarUrl={avatar_url} username={username} />
+      <section className="wrapper">
+        <Link to="/">
+          <h1>House of Games</h1>
         </Link>
-        <Menu />
+        <section>
+          <Link to={`/users/${user.username}`}>
+            <Avatar avatarUrl={user.avatar_url} username={user.username} />
+          </Link>
+          <Menu />
+        </section>
       </section>
     </StyledHeader>
   );
